@@ -1,0 +1,124 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/WebPage/Master/LogoSearchUser.Master" AutoEventWireup="true" CodeBehind="ShowSearchList.aspx.cs" Inherits="SoftwareClassDesign.WebPage.ShowSearchList.ShowSearchList" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+<link id="Link2" href="./ShowSearchList.css" rel="stylesheet" type="text/css">
+
+</asp:Content>
+
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+
+
+
+<div id="div1" runat="server">
+
+<asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+</div>
+    
+    
+
+<%-- <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+        <ContentTemplate>  --%> 
+    <div id="divSearch" runat="server" 
+        
+        
+        
+        style="background-color: #808080; border: thick solid #000000; padding: 10px; margin: 10px; position: absolute; left: 100px; right: 100px; top: 200px;">
+    <center>
+  
+  
+    <asp:Panel ID="PanelSearch" runat="server">
+    <asp:TextBox ID="searchTextBox" runat="server" Height="36px" Width="300px" 
+            Font-Size="X-Large"></asp:TextBox>
+    <asp:ImageButton ID="searchButton" runat="server"  Height="48px" Width="48px" 
+            ImageUrl="~/newpng/Search magnifier.png" onclick="searchButton_Click" />
+    </asp:Panel>
+    </center>
+    </div>
+
+
+<div id ="middle" 
+        
+        
+        
+        
+        
+        style="margin: 10px; border: thick solid #808080; background-color: #808080; line-height: 30px;  position: absolute; left: 100px;right: 100px; top:300px">
+
+<div id="divCatagory" runat="server" 
+        
+        
+        style="padding: 10px; margin: 10px; background-color: #808080; border: thick solid #000000">
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+</div>
+
+<div id="divSort" runat="server" 
+        
+        style=" padding: 10px; margin: 10px; border: thick solid #000000; background-color: #808080; ">
+
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+    <asp:DropDownList ID="DropDownList1" runat="server" AutoPostBack="True" 
+        onselectedindexchanged="DropDownList1_SelectedIndexChanged">
+        <asp:ListItem Selected="True">时间</asp:ListItem>
+        <asp:ListItem>价格</asp:ListItem>
+        <asp:ListItem>热度</asp:ListItem>
+    </asp:DropDownList>
+    &nbsp;
+    <asp:Button ID="ButtonReverse" runat="server" onclick="ButtonReverse_Click" 
+     Text="降序"   enableviewstate="true" />
+
+    </div>
+    
+    </div>
+<%--</ContentTemplate>
+</asp:UpdatePanel>--%>
+          
+
+<div id="divPayCommodity" runat="server" 
+        
+        
+        
+        
+        style="border: thick solid #000000; margin: 10px; padding: 10px; position: absolute; right: 100px; background-color: #808080; top: 500px;">
+<asp:Label ID="LabelNoPayResult" runat="server" Text="推荐商家的商品" Width="145px" 
+        ForeColor="#009900" Font-Size="Large"></asp:Label>
+<%--pay--%>
+<asp:Panel ID="Panel1" runat="server" Visible="False">
+    divp<br />
+    <asp:Label ID="Label6" runat="server" Text="标题" Width="100px"></asp:Label>
+    <asp:Label ID="Label9" runat="server" Text="卖家" Width="50px"></asp:Label>
+    <asp:Label ID="Label10" runat="server" Text="关注度" Width="50px" 
+        Font-Bold="False"></asp:Label>
+</asp:Panel>
+    </div>
+
+   
+<div id="divNoPayCommodity" runat="server" 
+        
+        
+        
+        
+        style="border: thick solid #000000; padding: 10px; margin: 10px; left: 100px; position: absolute; background-color: #808080; width: 400px; top: 500px;">
+<asp:Label ID="LabelPayResult" runat="server" Text="搜索结果" Width="100px" 
+        ForeColor="#009900" BorderStyle="None" Font-Size="Larger"></asp:Label>
+<%--pay--%>
+<asp:Panel ID="PanelTitleCommodity" runat="server" Visible="False">
+    <asp:Label ID="Label1" runat="server" Text="图" Width="100px"></asp:Label>
+    <asp:Label ID="Label2" runat="server" Text="标题" Width="100px"></asp:Label>
+    <asp:Label ID="Label14" runat="server" Text="分类" Width="60px"></asp:Label>
+    <asp:Label ID="Label3" runat="server" Text="Tag" Width="120px"></asp:Label>
+    <asp:Label ID="Label4" runat="server" Text="发布时间" Width="100px"></asp:Label>
+    <asp:Label ID="Label11" runat="server" Text="卖家" Width="50px"></asp:Label>
+    <asp:Label ID="Label12" runat="server" Text="关注度" Width="50px"></asp:Label>
+    <asp:Label ID="Label13" runat="server" Text="价格" Width="50px"></asp:Label>
+</asp:Panel>
+</div>
+
+<div id="div2" runat="server" visible="False">
+
+</div>
+
+</asp:Content>

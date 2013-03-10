@@ -1,0 +1,84 @@
+﻿body 
+{
+}
+#PublishCommodityDiv
+{
+    margin:10px 10px 10px 10pxP;
+}
+
+#PublishCommodityDiv ul
+{
+    list-style-type:none;
+    margin-left:30px;
+    margin-top:10px;
+    line-height:50px;       
+}
+.LabelCSS
+{
+    font-family:微软雅黑;
+    font-size:18px;
+    font-weight:bold;    
+}
+.TitleLabelCSS
+{   
+    margin-left:30px;
+    margin-top:20px;
+    font-family:微软雅黑;
+    font-size:25px;
+    font-weight:bold;          
+}
+.TextBoxCSS
+{
+    margin-left:10px;    
+    width:200px;
+    height:20px;
+    font-family:微软雅黑;    
+}
+.TagsTextBoxCSS
+{
+    margin-left:10px;    
+    width:150px;
+    height:20px;  
+}
+.DesctiptionTextBoxCSS
+{
+    margin-left:90px;    
+    width:250px;
+    height:200px; 
+    float:left;
+    margin-top:-30px;
+    font-family:微软雅黑;
+}
+.ImageTextBox
+{
+    margin-left:10px;    
+    width:300px;
+    height:20px;  
+}
+.ButtonCSS
+{
+    font-family:微软雅黑;
+    font-weight:bold;
+    font-size:18px;
+    float:left;
+    margin-top:300px;  
+    margin-left:50px;  
+    width:80px;
+}
+#ButtonLiCSS
+{
+    float:left;
+    font-family:微软雅黑;
+    font-weight:bold;
+    margin-left:-280px;    
+}
+
+#ConfirmInfoLabelLiCSS
+{
+    float:left;
+    font-family:微软雅黑;
+    font-weight:bold;
+    font-size:18px;
+    margin-left:-350px; 
+    margin-top:230px;
+}

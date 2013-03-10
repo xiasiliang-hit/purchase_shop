@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{AF64E233-2FB0-4094-A634-B191C978A255}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SoftwareClassDesign</RootNamespace>
+    <AssemblyName>SoftwareClassDesign</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=3.0.30512.20315, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\SoftwareClassDesign.dll" />
+    <Content Include="bin\SoftwareClassDesign.pdb" />
+    <Content Include="Images\ForFun.jpg" />
+    <Content Include="Images\ImagesForUserMainPageMasterPage\BodyBackground.png" />
+    <Content Include="Images\ImagesForUserMainPageMasterPage\关注宝贝.png" />
+    <Content Include="Images\ImagesForUserMainPageMasterPage\好友.png" />
+    <Content Include="Images\ImagesForUserMainPageMasterPage\我的宝贝.png" />
+    <Content Include="Images\ImagesForUserMainPageMasterPage\搜人.png" />
+    <Content Include="Images\ImagesForUserMainPageMasterPage\留言.png" />
+    <Content Include="Images\ImagesForUserMainPageMasterPage\站内信.png" />
+    <Content Include="Images\ImagesForUserMainPageMasterPage\订单.png" />
+    <Content Include="Images\ImagesForUserMainPageMasterPage\设置.png" />
+    <Content Include="Images\ImagesForUserMainPageMasterPage\评论.png" />
+    <Content Include="Images\ImagesForUserOwnZoneMasterPage\加关注.png" />
+    <Content Include="Images\ImagesForUserOwnZoneMasterPage\发私信.png" />
+    <Content Include="Images\wallpaper3.jpg" />
+    <Content Include="newpng\Accept item.png" />
+    <Content Include="newpng\Add item.png" />
+    <Content Include="newpng\Add to favorites.png" />
+    <Content Include="newpng\Chat japonais.png" />
+    <Content Include="newpng\Chat japonais1.png" />
+    <Content Include="newpng\Chat japonais2.png" />
+    <Content Include="newpng\Chat japonais3.png" />
+    <Content Include="newpng\Comment bubble.png" />
+    <Content Include="newpng\Dollar currency sign.png" />
+    <Content Include="newpng\Down arrow.png" />
+    <Content Include="newpng\Edit item %281%29.png" />
+    <Content Include="newpng\Edit item.png" />
+    <Content Include="newpng\Email.png" />
+    <Content Include="newpng\Login.png" />
+    <Content Include="newpng\Note.png" />
+    <Content Include="newpng\Process.png" />
+    <Content Include="newpng\Remove item.png" />
+    <Content Include="newpng\Right arrow.png" />
+    <Content Include="newpng\Search magnifier.png" />
+    <Content Include="newpng\Shopping cart.png" />
+    <Content Include="newpng\Telephone.png" />
+    <Content Include="newpng\Trash.png" />
+    <Content Include="newpng\User comment.png" />
+    <Content Include="newpng\User.png" />
+    <Content Include="newpng\Users.png" />
+    <Content Include="newpng\Yen currency sign.png" />
+    <Content Include="obj\Debug\SoftwareClassDesign.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\SoftwareClassDesign.dll" />
+    <Content Include="obj\Debug\SoftwareClassDesign.pdb" />
+    <Content Include="Pic\accept.png" />
+    <Content Include="Pic\accept_page.png" />
+    <Content Include="Pic\add.png" />
+    <Content Include="Pic\add_page.png" />
+    <Content Include="Pic\add_to_folder.png" />
+    <Content Include="Pic\attachment.png" />
+    <Content Include="Pic\back.png" />
+    <Content Include="Pic\block.png" />
+    <Content Include="Pic\calendar.png" />
+    <Content Include="Pic\calendar_empty.png" />
+    <Content Include="Pic\chart.png" />
+    <Content Include="Pic\chart_pie.png" />
+    <Content Include="Pic\clock.png" />
+    <Content Include="Pic\comment.png" />
+    <Content Include="Pic\comments.png" />
+    <Content Include="Pic\delete.png" />
+    <Content Include="Pic\delete_folder.png" />
+    <Content Include="Pic\delete_page.png" />
+    <Content Include="Pic\download.png" />
+    <Content Include="Pic\favorite.png" />
+    <Content Include="Pic\folder.png" />
+    <Content Include="Pic\folder_accept.png" />
+    <Content Include="Pic\folder_full.png" />
+    <Content Include="Pic\full_page.png" />
+    <Content Include="Pic\heart.png" />
+    <Content Include="Pic\help.png" />
+    <Content Include="Pic\info.png" />
+    <Content Include="Pic\lock.png" />
+    <Content Include="Pic\mail.png" />
+    <Content Include="Pic\mail_lock.png" />
+    <Content Include="Pic\mail_receive.png" />
+    <Content Include="Pic\mail_search.png" />
+    <Content Include="Pic\mail_send.png" />
+    <Content Include="Pic\new_page.png" />
+    <Content Include="Pic\next.png" />
+    <Content Include="Pic\page_process.png" />
+    <Content Include="Pic\process.png" />
+    <Content Include="Pic\promotion.png" />
+    <Content Include="Pic\protection.png" />
+    <Content Include="Pic\refresh.png" />
+    <Content Include="Pic\rss.png" />
+    <Content Include="Pic\search.png" />
+    <Content Include="Pic\search_page.png" />
+    <Content Include="Pic\tag_blue.png" />
+    <Content Include="Pic\tag_green.png" />
+    <Content Include="Pic\text_page.png" />
+    <Content Include="Pic\unlock.png" />
+    <Content Include="Pic\user.png" />
+    <Content Include="Pic\users.png" />
+    <Content Include="Pic\warning.png" />
+    <Content Include="Pic\zhao.jpg" />
+    <Content Include="Pic\模板无忧说明.txt" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="WebPage\Default.aspx" />
+    <Content Include="WebPage\Default.css" />
+    <Content Include="WebPage\index.html" />
+    <Content Include="WebPage\Master\Login.png" />
+    <Content Include="WebPage\Master\LogoSearchUser.css" />
+    <Content Include="WebPage\Register\Registe.aspx" />
+    <Content Include="WebPage\ShopingCar\ShoppingCar.aspx" />
+    <Content Include="WebPage\ShopingCar\ShoppingCarList.css" />
+    <Content Include="WebPage\ShowCommodity\ShowCommodity.aspx" />
+    <Content Include="WebPage\ShowCommodity\ShowCommodity.css" />
+    <Content Include="WebPage\ShowSearchList\ShowSearchList.aspx" />
+    <Content Include="WebPage\ShowSearchList\ShowSearchList.css" />
+    <Content Include="WebPage\UserMainPages\PublishCommodityPage\PublishCommodityPage.aspx" />
+    <Content Include="WebPage\UserMainPages\PublishCommodityPage\PublishCommodityPage.css" />
+    <Content Include="WebPage\UserMainPages\UserCollectionPage\UserCollectionPage.aspx" />
+    <Content Include="WebPage\UserMainPages\UserCommentPage\UserCommentPage.aspx" />
+    <Content Include="WebPage\UserMainPages\UserCommodityPage\UserCommodityPage.aspx" />
+    <Content Include="WebPage\UserMainPages\UserFriendsPage\UserFriendsPage.aspx" />
+    <Content Include="WebPage\UserMainPages\UserInfoSetPage\UserInfoSetPage.aspx" />
+    <Content Include="WebPage\UserMainPages\UserInsiteMessagePage\UserInsiteMessagePage.aspx" />
+    <Content Include="WebPage\UserMainPages\UserMainPageMasterPage\Login.png" />
+    <Content Include="WebPage\UserMainPages\UserMainPage\UserMainPage.aspx" />
+    <Content Include="WebPage\UserMainPages\UserOderPage\UserOderPage.aspx" />
+    <Content Include="WebPage\UserMainPages\UserPublicMessagePage\UserPublicMessagePage.aspx" />
+    <Content Include="WebPage\UserOwnZonePage\UserCommentsPage\UserCommentsPage.aspx" />
+    <Content Include="WebPage\UserOwnZonePage\UserFriendsListPage\UserFriendsListPage.aspx" />
+    <Content Include="WebPage\UserOwnZonePage\UserInfoPage\UserInfoPage.aspx" />
+    <Content Include="WebPage\UserOwnZonePage\UserOwnZonePage\UserOwnZonePage.aspx" />
+    <Content Include="WebPage\UserOwnZonePage\UserPublicMessagePage\UserPublicMessagePage.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DatabaseAccess\DataClasses1.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Information\CollectItem.cs" />
+    <Compile Include="Information\Comment.cs" />
+    <Compile Include="Information\Commodity.cs" />
+    <Compile Include="Information\CommodityKind.cs" />
+    <Compile Include="Information\CommodityKindStr.cs" />
+    <Compile Include="Information\Complemaint.cs" />
+    <Compile Include="Information\Message.cs" />
+    <Compile Include="Information\MessageState.cs" />
+    <Compile Include="Information\MessageType.cs" />
+    <Compile Include="Information\Order.cs" />
+    <Compile Include="Information\Tag.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserFundationClasses\AdminUser.cs" />
+    <Compile Include="UserFundationClasses\CommonUser.cs" />
+    <Compile Include="UserFundationClasses\NonPaymentRegisterUser.cs" />
+    <Compile Include="UserFundationClasses\PaymentRegisterUser.cs" />
+    <Compile Include="UserFundationClasses\RegistedUser.cs" />
+    <Compile Include="UserFundationClasses\SystemAdmin.cs" />
+    <Compile Include="UserFundationClasses\User.cs" />
+    <Compile Include="UserFundationClasses\UserZoneStyle.cs" />
+    <Compile Include="UserServiceClasses\AdminUserService.cs" />
+    <Compile Include="UserServiceClasses\CommonUserService.cs" />
+    <Compile Include="UserServiceClasses\NonPaymentUserService.cs" />
+    <Compile Include="UserServiceClasses\PaymentUserService.cs" />
+    <Compile Include="UserServiceClasses\RegisterUserService.cs" />
+    <Compile Include="UserServiceClasses\SystemService.cs" />
+    <Compile Include="WebPage\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage\Master\LogoSearchUser.Master.cs">
+      <DependentUpon>LogoSearchUser.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\Master\LogoSearchUser.Master.designer.cs">
+      <DependentUpon>LogoSearchUser.Master</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage\Register\Registe.aspx.cs">
+      <DependentUpon>Registe.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\Register\Registe.aspx.designer.cs">
+      <DependentUpon>Registe.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage\ShopingCar\ShoppingCar.aspx.cs">
+      <DependentUpon>ShoppingCar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\ShopingCar\ShoppingCar.aspx.designer.cs">
+      <DependentUpon>ShoppingCar.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage\ShowCommodity\ShowCommodity.aspx.cs">
+      <DependentUpon>ShowCommodity.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\ShowCommodity\ShowCommodity.aspx.designer.cs">
+      <DependentUpon>ShowCommodity.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage\ShowSearchList\ShowSearchList.aspx.cs">
+      <DependentUpon>ShowSearchList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\ShowSearchList\ShowSearchList.aspx.designer.cs">
+      <DependentUpon>ShowSearchList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage\UserMainPages\PublishCommodityPage\PublishCommodityPage.aspx.cs">
+      <DependentUpon>PublishCommodityPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\UserMainPages\PublishCommodityPage\PublishCommodityPage.aspx.designer.cs">
+      <DependentUpon>PublishCommodityPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage\UserMainPages\UserCollectionPage\UserCollectionPage.aspx.cs">
+      <DependentUpon>UserCollectionPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\UserMainPages\UserCollectionPage\UserCollectionPage.aspx.designer.cs">
+      <DependentUpon>UserCollectionPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage\UserMainPages\UserCommentPage\UserCommentPage.aspx.cs">
+      <DependentUpon>UserCommentPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\UserMainPages\UserCommentPage\UserCommentPage.aspx.designer.cs">
+      <DependentUpon>UserCommentPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage\UserMainPages\UserCommodityPage\UserCommodityPage.aspx.cs">
+      <DependentUpon>UserCommodityPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\UserMainPages\UserCommodityPage\UserCommodityPage.aspx.designer.cs">
+      <DependentUpon>UserCommodityPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage\UserMainPages\UserFriendsPage\UserFriendsPage.aspx.cs">
+      <DependentUpon>UserFriendsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\UserMainPages\UserFriendsPage\UserFriendsPage.aspx.designer.cs">
+      <DependentUpon>UserFriendsPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage\UserMainPages\UserInfoSetPage\UserInfoSetPage.aspx.cs">
+      <DependentUpon>UserInfoSetPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\UserMainPages\UserInfoSetPage\UserInfoSetPage.aspx.designer.cs">
+      <DependentUpon>UserInfoSetPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage\UserMainPages\UserInsiteMessagePage\UserInsiteMessagePage.aspx.cs">
+      <DependentUpon>UserInsiteMessagePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\UserMainPages\UserInsiteMessagePage\UserInsiteMessagePage.aspx.designer.cs">
+      <DependentUpon>UserInsiteMessagePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage\UserMainPages\UserMainPageMasterPage\UserMainPageMasterPage.master.cs">
+      <DependentUpon>UserMainPageMasterPage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\UserMainPages\UserMainPageMasterPage\UserMainPageMasterPage.master.designer.cs">
+      <DependentUpon>UserMainPageMasterPage.master</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage\UserMainPages\UserMainPage\UserMainPage.aspx.cs">
+      <DependentUpon>UserMainPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\UserMainPages\UserMainPage\UserMainPage.aspx.designer.cs">
+      <DependentUpon>UserMainPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage\UserMainPages\UserOderPage\UserOderPage.aspx.cs">
+      <DependentUpon>UserOderPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\UserMainPages\UserOderPage\UserOderPage.aspx.designer.cs">
+      <DependentUpon>UserOderPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage\UserMainPages\UserPublicMessagePage\UserPublicMessagePage.aspx.cs">
+      <DependentUpon>UserPublicMessagePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\UserMainPages\UserPublicMessagePage\UserPublicMessagePage.aspx.designer.cs">
+      <DependentUpon>UserPublicMessagePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage\UserOwnZonePage\UserCommentsPage\UserCommentsPage.aspx.cs">
+      <DependentUpon>UserCommentsPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\UserOwnZonePage\UserCommentsPage\UserCommentsPage.aspx.designer.cs">
+      <DependentUpon>UserCommentsPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage\UserOwnZonePage\UserCommodityPage\UserCommodityPage.aspx.cs">
+      <DependentUpon>UserCommodityPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\UserOwnZonePage\UserCommodityPage\UserCommodityPage.aspx.designer.cs">
+      <DependentUpon>UserCommodityPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage\UserOwnZonePage\UserFriendsListPage\UserFriendsListPage.aspx.cs">
+      <DependentUpon>UserFriendsListPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\UserOwnZonePage\UserFriendsListPage\UserFriendsListPage.aspx.designer.cs">
+      <DependentUpon>UserFriendsListPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage\UserOwnZonePage\UserInfoPage\UserInfoPage.aspx.cs">
+      <DependentUpon>UserInfoPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\UserOwnZonePage\UserInfoPage\UserInfoPage.aspx.designer.cs">
+      <DependentUpon>UserInfoPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage\UserOwnZonePage\UserOwnZoneMasterPage\UserOwnZoneMasterPage.master.cs">
+      <DependentUpon>UserOwnZoneMasterPage.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\UserOwnZonePage\UserOwnZoneMasterPage\UserOwnZoneMasterPage.master.designer.cs">
+      <DependentUpon>UserOwnZoneMasterPage.master</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage\UserOwnZonePage\UserOwnZonePage\UserOwnZonePage.aspx.cs">
+      <DependentUpon>UserOwnZonePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\UserOwnZonePage\UserOwnZonePage\UserOwnZonePage.aspx.designer.cs">
+      <DependentUpon>UserOwnZonePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebPage\UserOwnZonePage\UserPublicMessagePage\UserPublicMessagePage.aspx.cs">
+      <DependentUpon>UserPublicMessagePage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebPage\UserOwnZonePage\UserPublicMessagePage\UserPublicMessagePage.aspx.designer.cs">
+      <DependentUpon>UserPublicMessagePage.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Images\user\commodity\" />
+    <Folder Include="Images\user\portrait\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DatabaseAccess\DataClasses1.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="Pic\png.rar" />
+    <Content Include="WebPage\Master\LogoSearchUser.Master" />
+    <Content Include="WebPage\UserMainPages\UserMainPageMasterPage\UserMainPageMasterPage.css" />
+    <Content Include="WebPage\UserMainPages\UserMainPageMasterPage\UserMainPageMasterPage.master" />
+    <Content Include="WebPage\UserOwnZonePage\UserCommodityPage\UserCommodityPage.aspx" />
+    <Content Include="WebPage\UserOwnZonePage\UserOwnZoneMasterPage\UserOwnZoneMasterPage.css" />
+    <Content Include="WebPage\UserOwnZonePage\UserOwnZoneMasterPage\UserOwnZoneMasterPage.master" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DatabaseAccess\DataClasses1.dbml.layout">
+      <DependentUpon>DataClasses1.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>3430</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

@@ -1,0 +1,481 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PurchaseWeb_v1" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=DANNY;Initial Catalog=PurchaseWeb_v1;Persist Security Info=True;User ID=PurchaseWebAdmin" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PurchaseWeb_v1ConnectionString1" Provider="System.Data.SqlClient" />
+  <Function Name="dbo.deleteCollect" Method="deleteCollect">
+    <Parameter Name="user_id" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="commodity_id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.deleteComment" Method="deleteComment">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.deleteMessageByID" Method="deleteMessageByID">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.deleteUserAttention" Method="deleteUserAttention">
+    <Parameter Name="id_pay" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="id_gain" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.getAllComplaint" Method="getAllComplaint">
+    <ElementType Name="getAllComplaintResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="userfrom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="userto" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="content" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="state" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="commodityid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.getAllPayUser" Method="getAllPayUser">
+    <ElementType Name="getAllPayUserResult">
+      <Column Name="id" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="pwd" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="nickname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="zonestyleid" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="portraitPath" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="school" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="payamount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="payendtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.getAllPrivateMessageByUser" Method="getAllPrivateMessageByUser">
+    <Parameter Name="user_id" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="getAllPrivateMessageByUserResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="userfrom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="userto" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="content" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="state" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.getAllPublicMessageByUser" Method="getAllPublicMessageByUser">
+    <Parameter Name="user_id" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="getAllPublicMessageByUserResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="userfrom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="userto" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="content" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="state" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.getAttentionByUser" Method="getAttentionByUser">
+    <Parameter Name="id_pay" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="getAttentionByUserResult">
+      <Column Name="id" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="pwd" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="nickname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="zonestyleid" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="portraitPath" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="school" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="payamount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="payendtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.getNumCommentByUser" Method="getNumCommentByUser">
+    <Parameter Name="user_id" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.getNumPrivateMessageByUser" Method="getNumPrivateMessageByUser">
+    <Parameter Name="user_id" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.getNumPublicMessageByUserName" Method="getNumPublicMessageByUserName">
+    <Parameter Name="user_id" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.getOrderByUserfrom" Method="getOrderByUserfrom">
+    <Parameter Name="user_id" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="getOrderByUserfromResult">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="userfrom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="userto" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="state" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.getOrderByUserto" Method="getOrderByUserto">
+    <Parameter Name="user_id" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="getOrderByUsertoResult">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="userfrom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="userto" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="state" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.getUnreadPrivateMessageByUser" Method="getUnreadPrivateMessageByUser">
+    <Parameter Name="user_id" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="getUnreadPrivateMessageByUserResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="userfrom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="userto" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="content" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="state" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.getUnreadPublicMessageByUser" Method="getUnreadPublicMessageByUser">
+    <Parameter Name="user_id" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="getUnreadPublicMessageByUserResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="userfrom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="userto" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="content" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="state" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.getUserByUserName" Method="getUserByUserName">
+    <Parameter Name="user_id" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="getUserByUserNameResult">
+      <Column Name="id" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="pwd" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="nickname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="zonestyleid" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="portraitPath" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="school" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="payamount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="payendtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.insertAttention" Method="insertAttention">
+    <Parameter Name="user_id_pay" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="user_id_gain" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.insertCollect" Method="insertCollect">
+    <Parameter Name="user_id" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="commodity_id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.insertMessage" Method="insertMessage">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="userfrom" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="userto" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="content" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="type" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.insertOrder" Method="insertOrder">
+    <Parameter Name="userfrom" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="userto" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.insertOrderCommodity" Method="insertOrderCommodity">
+    <Parameter Name="order_id" Type="System.Int32" DbType="Int" />
+    <Parameter Name="commodity_id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.insertUser" Method="insertUser">
+    <Parameter Name="id" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="pwd" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="nickname" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="email" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="phone" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="zonestyleid" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="portraitPath" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="city" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="school" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="address" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.isRegisted" Method="isRegisted">
+    <Parameter Name="id" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="pwd" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="return" Type="System.Boolean" DbType="Bit" Direction="InOut" />
+    <ElementType Name="isRegistedResult">
+      <Column Name="id" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="pwd" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="nickname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="zonestyleid" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="portraitPath" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="school" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="payamount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="payendtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.updateMessageStateByID" Method="updateMessageStateByID">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.updateOrderStateByID" Method="updateOrderStateByID">
+    <Parameter Name="id" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.updatePopularityCommodity" Method="updatePopularityCommodity">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.updatePopularityTag" Method="updatePopularityTag">
+    <Parameter Name="id" Type="System.String" DbType="NVarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.updateRegistedUser" Method="updateRegistedUser">
+    <Parameter Name="id" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="pwd" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="nickname" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="email" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="phone" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="zonestyleid" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="portraitPath" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="city" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="school" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="address" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="type" Type="System.Int32" DbType="Int" />
+    <Parameter Name="payamount" Type="System.Double" DbType="Float" />
+    <Parameter Name="payendtime" Type="System.DateTime" DbType="DateTime" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.insertCommodity" Method="insertCommodity">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="userfrom" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="name" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="discription" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="starttimme" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="endtime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="price" Type="System.Double" DbType="Float" />
+    <Parameter Name="picturepath" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="kind" Type="System.Int32" DbType="Int" />
+    <Parameter Name="popularity" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.getCommodityByID" Method="getCommodityByID">
+    <Parameter Name="commodity_id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="getCommodityByIDResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="userfrom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="discription" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="starttime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="endtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="picturepath" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="kind" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="popularity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.getCommodityByOreder" Method="getCommodityByOreder">
+    <Parameter Name="order_id" Type="System.Int32" DbType="Int" />
+    <ElementType Name="getCommodityByOrederResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="userfrom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="discription" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="starttime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="endtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="picturepath" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="kind" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="popularity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.getCommodityByUser" Method="getCommodityByUser">
+    <Parameter Name="user_id" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="getCommodityByUserResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="userfrom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="discription" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="starttime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="endtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="picturepath" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="kind" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="popularity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.getCommentByUser" Method="getCommentByUser">
+    <Parameter Name="user_id" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="getCommentByUserResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="userfrom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="userto" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="content" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="state" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="commodityid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.insertComment" Method="insertComment">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="userfrom" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="userto" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="content" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="commodityid" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.insertComplaint" Method="insertComplaint">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="userfrom" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="userto" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="content" Type="System.String" DbType="NVarChar(500)" />
+    <Parameter Name="commodityid" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.updateCommentStateByID" Method="updateCommentStateByID">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.updateComplaintStateByID" Method="updateComplaintStateByID">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.getCollectByUser" Method="getCollectByUser">
+    <Parameter Name="user_id" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="getCollectByUserResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="userfrom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="discription" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="starttime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="endtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="picturepath" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="kind" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="popularity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.searchRegistedUser" Method="searchRegistedUser">
+    <Parameter Name="keyword" Type="System.String" DbType="NVarChar(50)" />
+    <ElementType Name="searchRegistedUserResult">
+      <Column Name="id" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="pwd" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="nickname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="phone" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="zonestyleid" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="portraitPath" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="school" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="payamount" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="payendtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.getStylePathByUser" Method="getStylePathByUser">
+    <Parameter Name="user_id" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="return" Type="System.String" DbType="NVarChar(500)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.getPortraitPathByUser" Method="getPortraitPathByUser">
+    <Parameter Name="id" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="return" Type="System.String" DbType="NVarChar(500)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.getAllTag" Method="getAllTag">
+    <ElementType Name="getAllTagResult">
+      <Column Name="id" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="popularity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.getAllDemandCommodity" Method="getAllDemandCommodity">
+    <ElementType Name="getAllDemandCommodityResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="userfrom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="discription" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="starttime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="endtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="kind" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="popularity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.insertDemandCommodity" Method="insertDemandCommodity">
+    <Parameter Name="id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Parameter Name="userfrom" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="name" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="discription" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="starttime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="endtime" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="price" Type="System.Double" DbType="Float" />
+    <Parameter Name="kind" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.searchDemandInfo" Method="searchDemandInfo">
+    <Parameter Name="keyword" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="kind" Type="System.Int32" DbType="Int" />
+    <ElementType Name="searchDemandInfoResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="userfrom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="discription" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="starttime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="endtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="kind" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="popularity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.searchNoPaymentCommodity" Method="searchNoPaymentCommodity">
+    <Parameter Name="keyword" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="kind" Type="System.Int32" DbType="Int" />
+    <ElementType Name="searchNoPaymentCommodityResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="userfrom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="discription" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="starttime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="endtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="picturepath" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="kind" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="popularity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.searchPaymentCommodity" Method="searchPaymentCommodity">
+    <Parameter Name="keyword" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="kind" Type="System.Int32" DbType="Int" />
+    <ElementType Name="searchPaymentCommodityResult">
+      <Column Name="id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="userfrom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="discription" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="starttime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="endtime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="picturepath" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="kind" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="popularity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.getTagByCommodity" Method="getTagByCommodity">
+    <Parameter Name="commodity_id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <ElementType Name="getTagByCommodityResult">
+      <Column Name="id" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="popularity" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.insertTag" Method="insertTag">
+    <Parameter Name="tag_id" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="commodity_id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.insertTag" Method="insertTag1">
+    <Parameter Name="tag_id" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="commodity_id" Type="System.Guid" DbType="UniqueIdentifier" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

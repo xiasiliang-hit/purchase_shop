@@ -1,0 +1,179 @@
+﻿body 
+{
+    min-height:100%;
+    background-color:Silver;
+    background-image:url(../../../Images/ImagesForUserMainPageMasterPage/BodyBackground.png);  
+}
+
+/*用户基本信息DIV*/
+#UserBasicInfoDiv
+{
+    height:510px;
+    width:230px; 
+    border-style:solid;    
+    border-color:Gray;
+    border-width:5px;  
+    margin-left:100px;     
+}
+/*用户信息具体内容文本等DIV*/
+#UserInfoContentDiv
+{
+    width:200px;
+    height:150px;
+    margin:0px 10px 10px 10px;
+    border-style:solid;    
+    border-color:Gray;
+    border-width:2px;     
+}
+
+/*用户头像DIV*/
+#UserImageDiv
+{    
+    width:200px;
+    height:250px;
+    margin:10px 10px 10px 10px;
+    border-style:solid;    
+    border-color:Gray;
+    border-width:2px;     
+}
+/*用户头像*/
+.UserImage
+{
+    width:200px;
+    height:250px;
+}
+
+/*添加关注按钮和发私信按钮DIV*/
+#AddAttentionAndInsiteMessageButtonDiv
+{
+    width:200px;
+    height:60px;
+    margin:10px 10px 10px 10px;
+    border-style:solid;    
+    border-color:Gray;
+    border-width:2px;     
+}
+.AddAttentionButtonCSS
+{
+    width:95px;
+    height:60px;    
+}
+.PublishInsiteMessageButtonCSS
+{
+    width:95px;
+    height:60px; 
+    float:right;
+    margin-top:-64px;
+}
+/*顶部导航栏DIV*/
+#TopNavigationbarDiv
+{
+    height:55px;
+    width:770px;
+    border-style:solid;    
+    border-color:Gray;
+    border-width:5px; 
+    float:right;  
+    margin-right:100px;  
+    background-color:transparent;      
+}
+/*左边导航栏DIV*/
+#UserToolBoxDiv
+{
+    width:230px;
+    height:650px;
+    border-style:solid;    
+    border-color:Gray;
+    border-width:5px;
+    margin-left:100px; 
+    margin-top:10px;    
+}
+/*左边导航栏*/
+.UserToolBoxDivCSS
+{    
+    width:200px;
+    margin:10px 10px 10px 10px;
+      
+}
+
+/*派生子页面内容块*/
+#SubPageContentDiv
+{
+    width:500px;
+    height:1105px;
+    margin-right:10px;
+    margin-top:-445px;
+    margin-bottom:10px;        
+    float:right; 
+    border-style:solid;    
+    border-color:Gray;
+    border-width:5px; 
+}
+
+/*用户的好友列表*/
+#UserFriendsList
+{
+    width:250px;
+    float:right;
+    height:1105px;
+    border-style:solid;    
+    border-color:Gray;
+    border-width:5px;
+    margin-top:-445px;
+    margin-right:100px;         
+}
+
+#UserInfoContentDiv ul
+{
+    list-style-type:none;
+    margin-left:10px;
+    margin-top:5px;
+    line-height:25px;       
+}
+#UserInfoContentDiv li
+{
+    
+   
+}
+.SearchUserTextBoxCSS
+{
+    height:25px;
+    width:300px;
+    margin-right:10px;
+    float:right; 
+    margin-top:13px;    
+}
+.SearchUserTextBoxCSS
+{
+    height:25px;
+    width:300px;
+    margin-right:10px;
+    float:right; 
+    margin-top:13px;    
+}
+.SearchUserButtonCSS
+{
+    height:32px;
+    width:32px;  
+    margin-right:10px;
+    float:right; 
+    margin-top:13px;      
+}
+.SearchLabelCSS
+{
+    font-family:微软雅黑;
+    font-size:15px;
+    margin-right:10px;
+    float:right; 
+    margin-top:13px;      
+}
+#UserFriendsDiv
+{
+    width:250px;
+    height:30px;
+    background-color:Black;
+}
+.FriendGridViewCSS
+{
+    margin-top:1px;
+}

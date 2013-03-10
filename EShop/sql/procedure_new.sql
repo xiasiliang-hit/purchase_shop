@@ -1,0 +1,830 @@
+/*
+procedure for database 'PurchaseWeb'
+based on tables in  following files:
+User.sql
+Commodity.sql
+Message.sql
+*/
+
+create proc isRegisted
+@id nvarchar(50),
+@pwd nvarchar(50),
+@return bit output
+as
+declare @@temp_pwd nvarchar(50)
+begin
+	select @@temp_pwd=pwd
+	from RegistedUser
+	where id = @id
+
+	if @@temp_pwd = @pwd
+	begin
+		set @return = 1
+		select * from RegistedUser
+		where id = @id
+	end
+	else
+	begin
+		set @return = 0
+	end
+end
+go
+
+--新增用户
+create proc insertUser
+@id nvarchar(50),
+@pwd nvarchar(50),
+@nickname nvarchar(50),
+@email nvarchar(50),
+@phone nvarchar(50),
+@zonestyleid nvarchar(50),
+@portraitPath nvarchar(500),
+@city nvarchar(50),
+@school nvarchar(50),
+@address nvarchar(50)
+--@type int default 1==nopay
+
+--@pay_amount, float default=0
+--@payendtime datetime default=null
+as
+begin
+	insert into RegistedUser
+	values(@id, @pwd, @nickname, @email, @phone, @zonestyleid, @portraitPath, @city, @school, @address, 1, 0, null) --$
+end
+go
+
+--查找付费商家的符合搜索关键字的商品
+--如果所有类别，参数Kind传入"ALL"
+create proc searchPaymentCommodity
+@keyword nvarchar(50),
+@kind int
+as
+begin
+--	select id as matchUserID
+--	from RegistedUser
+--	where type = 2
+--
+--	select commodityid as matchCommodityID
+--	from TagAndCommodity
+--	where tagid like ('%' + @keyword + '%')
+select * from Commodity
+	if @kind = 0
+		begin
+		select * from Commodity
+		where (name like ('%' + @keyword + '%') or id in (select commodityid as matchCommodityID
+															from TagAndCommodity
+															where tagid like ('%' + @keyword + '%'))
+				)
+			and userfrom in (select id as matchUserID
+							from RegistedUser
+							where type = 2)
+--			and kind = @kind
+		end
+	else
+		begin
+		select * from Commodity
+		where (name like ('%' + @keyword + '%') or id in (select commodityid as matchCommodityID
+															from TagAndCommodity
+															where tagid like ('%' + @keyword + '%'))
+				)
+			and userfrom in (select id as matchUserID
+							from RegistedUser
+							where type = 2)
+			and kind = @kind
+		end
+end
+go
+
+--查找非付费商家的符合搜索关键字的商品
+--如果所有类别，参数Kind传入"ALL"
+create proc searchNoPaymentCommodity
+@keyword nvarchar(50),
+@kind int
+as
+begin
+--	select id as PayID from RegistedUser
+--	where type = 1
+--
+--	select commodityid as matchCommodityID
+--	from TagAndCommodity
+--	where tagid like ('%' + @keyword + '%')
+select * from Commodity
+	if @kind = 0
+		begin
+		select * from Commodity
+		where (name like ('%' + @keyword + '%') or id in (select commodityid as matchCommodityID
+															from TagAndCommodity
+															where tagid like ('%' + @keyword + '%'))
+				)
+			and userfrom in (select id as matchUserID
+							from RegistedUser
+							where type = 1)
+--			and kind = @kind
+		end
+	else
+		begin
+		select * from Commodity
+		where (name like ('%' + @keyword + '%') or id in (select commodityid as matchCommodityID
+															from TagAndCommodity
+															where tagid like ('%' + @keyword + '%'))
+				)
+			and userfrom in (select id as matchUserID
+							from RegistedUser
+							where type = 1)
+			and kind = @kind
+		end
+end
+go
+
+--获得用户个人信息
+create proc getUserByUserName
+@user_id nvarchar(50)
+as
+begin
+	select * from RegistedUser
+	where id = @user_id
+end
+go
+
+--获得用户所有发布的商品
+create proc getCommodityByUser
+@user_id nvarchar(50)
+
+as
+begin
+	select * from Commodity
+	where userfrom = @user_id
+end
+go
+
+--新增商品
+create proc insertCommodity
+@id uniqueidentifier,
+@userfrom nvarchar(50),
+@name nvarchar(50),
+@discription nvarchar(500),
+@starttimme datetime,
+@endtime datetime,
+
+@price float,
+@picturepath nvarchar(500),
+@kind int,
+@popularity int
+as
+begin
+	insert into Commodity
+	values (@id, @userfrom, @name, @discription, @starttimme, @endtime,@price,@picturepath, @kind, @popularity)
+end
+go
+
+--新增求购商品信息
+create proc insertDemandCommodity
+@id uniqueidentifier,
+@userfrom varchar(50),
+@name varchar(50),
+@discription varchar(500),
+@starttime datetime,
+@endtime datetime,
+
+@price float,
+@kind int
+--@popularity int
+as
+begin
+	insert into DemandCommodity
+	values (@id,@userfrom,@name,@discription,@starttime,@endtime,@price,@kind,0)
+end
+go
+
+--获得符合关键字的求购信息
+create proc searchDemandInfo
+@keyword nvarchar(50),
+@kind int
+as
+begin
+select * from DemandCommodity
+	if @kind = 0
+		begin
+		select * from DemandCommodity
+		where (name like ('%' + @keyword + '%'))
+		end
+	else
+		begin
+		select * from DemandCommodity
+		where (name like ('%' + @keyword + '%')
+			and kind = @kind)
+		end
+end
+go
+
+--得到未读私人消息
+create proc getUnreadPrivateMessageByUser
+@user_id nvarchar(50)
+as
+
+begin
+	select * from Message
+	where userto = @user_id
+		and type = 1
+		and state = 1
+end
+go
+
+--得到未读公共留言
+create proc getUnreadPublicMessageByUser
+@user_id nvarchar(50)
+as
+begin
+	select * from Message
+	where userto = @user_id
+		and type = 2
+		and state = 1
+end
+go
+
+--得到所有私人信息
+create proc getAllPrivateMessageByUser
+@user_id nvarchar(50)
+as
+begin
+	select * from Message
+	where userto = @user_id
+		and type = 1
+end
+go
+
+--得到所有公共留言
+create proc getAllPublicMessageByUser
+@user_id nvarchar(50)
+as
+begin
+	select * from Message
+	where userto = @user_id
+		and type = 2
+end
+go
+
+--获得个人评论
+create proc getCommentByUser
+@user_id nvarchar(50)
+as
+begin
+	select * from Comment
+	where userto = @user_id
+end
+go
+
+--获得站内信数量
+create proc getNumPrivateMessageByUser
+@user_id nvarchar(50)
+as
+declare @@num int
+begin
+	select @@num = count(*) from Message
+	where userfrom = @user_id
+		and type = 1
+	return @@num
+end
+go
+
+--获得个人公共留言数量
+create proc getNumPublicMessageByUserName
+@user_id nvarchar(50)
+as
+declare @@num int
+begin
+	select @@num = count(*) from Message
+	where userfrom = @user_id
+		and type = 2
+	return @@num
+end
+go
+
+--获得个人评论数量
+create proc getNumCommentByUser
+@user_id nvarchar(50)
+as
+declare @@num int
+begin
+	select @@num = count(*) from Message
+	where userfrom = @user_id and
+		type = 1
+	return @@num
+end
+go
+
+--获得买方下的订单
+create proc getOrderByUserfrom
+@user_id nvarchar(50)
+
+as
+begin
+	select * from CommodityOrder
+	where userfrom = @user_id
+end
+go
+
+--获得卖方收到的订单
+create proc getOrderByUserto
+@user_id nvarchar(50)
+as
+begin
+	select * from CommodityOrder
+	where userto = @user_id
+end
+go
+
+create proc getCommodityByOreder
+@order_id int
+as
+begin
+	select * from Commodity
+	where id in
+		(select commodityid from OrderAndCommodity
+			where orderid = @order_id)
+end
+go
+
+--更新未读消息状态
+create proc updateMessageStateByID
+@id uniqueidentifier
+as
+begin
+	update Message
+	set state = 0
+	where id = @id and state = 1
+end
+go
+
+--更新订单已读状态
+create proc updateOrderStateByID
+@id int
+as
+begin
+	update CommodityOrder
+	set state = 0
+	where id = @id
+end
+go
+
+--删除消息
+--include private message and public message
+create proc deleteMessageByID
+@id uniqueidentifier
+as
+begin
+	delete from Meassage
+	where id = @id
+end
+go
+
+--新增消息
+create proc insertMessage
+@id uniqueidentifier,
+@userfrom nvarchar(50),
+@userto nvarchar(50),
+
+@content nvarchar(500),
+--@state int, default = 1 = unread
+@type int
+as
+begin
+	insert into Message
+	values (@id, @userfrom, @userto, @content, 1, @type)
+end
+go
+
+--更新商品热度
+
+--update commodity and its tags
+create proc updatePopularityCommodity
+@id uniqueidentifier
+
+as
+begin
+	update Commodity
+	set popularity = popularity + 1
+	where id = @id
+
+	update Tag
+	set popularity = popularity + 1
+	where id in
+		(select tagid from TagAndCommodity
+		where commodityid = @id)
+end
+go
+
+--更新tag热度
+/*
+create proc updatePopularityTag
+@id nvarchar(50)
+as
+begin
+	if @id in (select id from Tag)
+	begin
+		update Tag
+		set popularity = popularity + 1
+		where id = @id
+	end
+	else
+	begin
+		insert into Tag
+		values (@id, 0)
+	end
+end
+go
+*/
+
+--新增订单
+create proc insertOrder
+--@id uniqueidentifier,
+@userfrom nvarchar(50),
+@userto nvarchar(50)
+--@state=1=unread
+as
+declare @@id int
+begin
+	insert into CommodityOrder
+	values (@userfrom,@userto,1)
+
+	select @@id = id from inserted
+	return @@id
+end
+go
+
+--新增订单商品
+create proc insertOrderCommodity
+@order_id int,
+@commodity_id uniqueidentifier
+as
+begin
+	insert into OrderAndCommodity
+	values (@order_id,@commodity_id)
+end
+go
+
+--新增收藏
+create proc insertCollect
+@user_id nvarchar(50),
+@commodity_id uniqueidentifier
+
+as
+begin
+	insert into Collect
+	values (@user_id, @commodity_id)
+end
+go
+
+--删除收藏
+create proc deleteCollect
+@user_id nvarchar(50),
+@commodity_id uniqueidentifier
+as
+begin
+	delete from Collect
+	where userid = @user_id and commodityid = @commodity_id
+end
+go
+
+--获得用户所有收藏
+create proc getCollectByUser
+@user_id nvarchar(50)
+as
+begin
+	select * from Commodity
+	where id in
+	(select commodityid from Collect
+	where userid = @user_id)
+end
+go
+
+--新增关注
+create proc insertAttention
+@user_id_pay nvarchar(50),
+@user_id_gain nvarchar(50)
+as
+begin
+	insert into Attention
+	values (@user_id_pay, @user_id_gain)
+end
+go
+
+--删除关注
+create proc deleteUserAttention
+@id_pay nvarchar(50),
+@id_gain nvarchar(50)
+as
+begin
+	delete from Attention
+	where idpay = @id_pay and idgain = @id_gain
+end
+go
+
+--获得个人所有关注
+create proc getAttentionByUser
+@id_pay nvarchar(50)
+as
+begin
+	select * from RegistedUser
+	where id in
+		(select idgain from Attention
+		where idpay = @id_pay)
+end
+go
+
+--获得用户样式文件物理路径
+create proc getStyleByUser
+@user_id nvarchar(50),
+@return nvarchar(500) output
+as
+declare @@fileurl nvarchar(500)
+begin
+	--select @@fileurl = fileurl
+	select @return = fileurl
+	from ZoneStyle
+	where id =
+		(select zonestyleid from RegistedUser
+		where id = @user_id)
+--return @@fileurl
+end
+go
+
+--获得用户头像文件物理路径
+create proc getPortraitPathByUser
+@id nvarchar(50),
+@return nvarchar(500) output
+as
+declare @@path nvarchar(500)
+begin
+	select @return = portraitPath
+	from RegistedUser
+	where id = @id
+	--return @@path
+end
+go
+
+--新增Tag
+
+---insert or increase
+create proc insertTag
+@tag_id nvarchar(50),
+@commodity_id uniqueidentifier
+as
+begin
+	insert into TagAndCommodity
+	values (@tag_id, @commodity_id)
+
+	if @id in (select id from Tag)
+	begin
+		update Tag
+		set popularity = popularity + 1
+		where id = @id
+	end
+	else
+	begin
+		insert into Tag
+		values (@tag_id, 0)
+	end
+end
+go
+
+
+--得到商品Tag
+create proc getTagByCommodity
+@commodity_id uniqueidentifier
+as
+begin
+	select * from Tag
+	where id in
+		(select tagid from TagAndCommodity
+		where commodityid = @commodity_id)
+end
+go
+
+---更新用户
+create proc updateRegistedUser
+@id nvarchar(50),
+@pwd nvarchar(50),
+@nickname nvarchar(50),
+@email nvarchar(50),
+@phone nvarchar(50),
+@zonestyleid nvarchar(50),
+@portraitPath nvarchar(500),
+@city nvarchar(50),
+@school nvarchar(50),
+@address nvarchar(50),
+
+@type int,
+@payamount float,
+@payendtime datetime
+as
+begin
+	delete from RegistedUser
+	where id = @id
+
+	insert into RegistedUser
+	values(@id,
+		@pwd,
+		@nickname,
+		@email,
+		@phone,
+		@zonestyleid,
+		@portraitPath,
+		@city,
+		@school,
+		@address,
+		@type,
+		@payamount,
+		@payendtime)
+end
+go
+
+--获得所有付费用户信息
+create proc getAllPayUser
+as
+begin
+	select * from RegistedUser
+	where type = 2
+end
+go
+
+--删除评论
+create proc deleteComment
+@id uniqueidentifier
+as
+begin
+	delete from Comment
+	where id = @id
+end
+go
+
+--得到所有投诉
+create proc getAllComplaint
+as
+begin
+	select * from Complaint
+end
+go
+
+
+
+/*
+create proc searchPaymentCommodity
+@keyword nvarchar(50),
+@kind nvarchar(50)
+as
+begin
+	select id as matchUserID
+	from RegistedUser
+	where type = 2
+
+	select commodityid as matchCommodityID
+	from TagAndCommodity
+	where tagid like ('%' + @keyword + '%')
+
+	if @kind = 'ALL'
+		begin
+		select * from Commodity
+		where (name like ('%' + @keyword + '%') or id in matchCommodityID)
+			and userfrom in matchUserID
+		end
+	else
+		begin
+		select * from Commodity
+		where (name like ('%' + @keyword + '%') or id in matchCommodityID)
+			and userfrom in PayID
+			and kind = @kind
+		end
+end
+
+create proc searchNoPaymentCommodity
+@keyword nvarchar(50),
+@kind nvarchar(50)
+as
+begin
+	select id as PayID from RegistedUser
+	where type = 1
+
+	select commodityid as matchCommodityID
+	from TagAndCommodity
+	where tagid like ('%' + @keyword + '%')
+
+	if @kind = 'ALL'
+		begin
+		select * from Commodity
+		where (name like ('%' + @keyword + '%') or id in matchCommodityID)
+			and userfrom in matchUserID
+		end
+	else
+		begin
+		select * from Commodity
+		where (name like ('%' + @keyword + '%') or id in matchCommodityID)
+			and userfrom in PayID
+			and kind = @kind
+		end
+end
+
+
+*/
+
+
+
+--matchs when keyword is in nickname phone
+create proc searchRegistedUser
+@keyword nvarchar(50)
+as
+declare @@matchword nvarchar(50)
+begin
+set @@matchword = '%' + @keyword + '%'
+
+		select * from RegistedUser
+		where (nickname like @@matchword
+			or phone like @@matchword)
+end
+go
+
+--得到商品
+create proc getCommodityByID
+@commodity_id uniqueidentifier
+as
+begin
+	select * from Commodity
+	where id = @commodity_id
+end
+go
+
+--新增评论
+create proc insertComment
+	@id uniqueidentifier,
+	@userfrom nvarchar(50),
+	@userto nvarchar(50),
+
+	@content nvarchar(500),
+
+	--@state int, 1==unread
+	@commodityid uniqueidentifier
+as
+begin
+	insert into Comment
+	values (@id, @userfrom, @userto, @content, 1, @commodityid)
+end
+go
+
+--新增投诉
+create proc insertComplaint
+	@id uniqueidentifier,
+	@userfrom nvarchar(50),
+	@userto nvarchar(50),
+
+	@content nvarchar(500),
+
+	--@state int, 1==unread
+	@commodityid uniqueidentifier
+as
+begin
+	insert into Complaint
+	values (@id, @userfrom, @userto,  @content, 1, @commodityid)
+end
+go
+
+--更新未读公共评论
+create proc updateCommentStateByID
+@id uniqueidentifier
+as
+begin
+	update Commment
+	set state = 0
+	where id = @id
+end
+go
+
+--更新投诉未读状态
+create proc updateComplaintStateByID
+@id uniqueidentifier
+as
+begin
+	update Complaint
+	set state = 0
+	where id = @id
+end
+go
+
+
+
+----
+------
+
+
+create proc getAllTag
+as
+begin
+	select * from Tag
+	order by popularity	desc
+end
+
+
+create proc getAllDemandCommodity
+as
+begin
+	select * from DemandCommodity
+end

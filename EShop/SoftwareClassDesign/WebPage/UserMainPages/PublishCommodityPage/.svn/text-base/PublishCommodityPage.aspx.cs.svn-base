@@ -1,0 +1,123 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using SoftwareClassDesign.Information;
+using SoftwareClassDesign.UserFundationClasses;
+using SoftwareClassDesign.UserServiceClasses;
+
+namespace SoftwareClassDesign.WebPage.UserMainPages.PublishCommodityPage
+{
+    public partial class PublishCommodityPage : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {            
+            if (!IsPostBack)
+            {
+                //判断用户是否登录
+                if (Session["UserType"] != null && Session["UserType"].ToString() != "CommonUser")
+                {
+                    //读取商品的种类
+                    for( int i=0;i<CommodityKindStr.KindStrInChinese.Length;++i)              
+                    {
+                        if (CommodityKindStr.KindStrInChinese[i] != "ALL")
+                        {
+                            this.CommodityKindDropDownList.Items.Add(new ListItem(CommodityKindStr.KindStrInChinese[i]));
+                            this.CommodityKindDropDownList.Items[i-1].Value = CommodityKindStr.KindStrInEglish[i];
+                        }
+                    }
+                }
+                //用户未登录
+                else
+                {
+                    Response.Redirect("../../Default.aspx");
+                }
+            }         
+        }
+
+        //发布商品
+        protected void PublisButton_Click(object sender, EventArgs e)
+        {
+            List<Commodity> CommodityList = new List<Commodity>();
+            Commodity commodity = new Commodity();
+            commodity.ID = System.Guid.NewGuid();
+            //commodity.UserName = ((RegistedUser)Session["User"]).UserName;
+            commodity.Name = this.CommodityNameTextBox.Text.Trim();
+            commodity.kind = (CommodityKind)Enum.Parse(typeof(CommodityKind), this.CommodityKindDropDownList.SelectedItem.ToString(), false);
+            commodity.popularity = 0;
+            //处理标签
+            commodity.tagList = new List<Tag>();
+            char[] Spiliter = new char[1];
+            Spiliter[0] = '；';
+            String[] Taglist = this.CommodityTagsTextBox.Text.Split(Spiliter, StringSplitOptions.None);
+            foreach (String tag in Taglist)
+            {
+                Tag newtag = new Tag();
+                newtag.name = tag;
+                newtag.popularity = 0;
+                commodity.tagList.Add(newtag);
+            }
+            commodity.StartTime = DateTime.Now;
+            commodity.EndTime = DateTime.Parse(this.CommodityPeriodTextBox.Text.ToString());
+            commodity.Price = Double.Parse(this.CommodityPriceTextBox.Text.Trim());
+            commodity.description = this.CommodityDescriptionTextBox.Text.Trim();
+            
+            //处理上传的图片
+            bool fileOk = false;
+            String path = Server.MapPath("~/Images/user/commodity/");
+            String fileExtension = "";
+            if(this.CommodityImageFileUpload.HasFile)
+            {               
+                //文件后缀名
+                fileExtension = System.IO.Path.GetExtension(this.CommodityImageFileUpload.FileName).ToLower();
+                String[] allowExtension = {".gif",".png",".jpeg",".jpg"};
+                foreach(String extension in allowExtension)
+                {
+                    if(fileExtension.Trim() == extension)
+                    {
+                        fileOk = true;
+                    }
+                }
+            }
+            if(fileOk)
+            {
+                try
+                {        
+                    
+                    this.CommodityImageFileUpload.SaveAs(path+commodity.ID.ToString()+ fileExtension);
+                    commodity.ImageUrl = path+commodity.ID.ToString()+ fileExtension;
+                    //发布商品
+                    CommodityList.Add(commodity);
+
+                    bool IsSucceed = (new RegisterUserService()).PublishCommodity(CommodityList);
+                    if (IsSucceed)
+                    {
+                        this.SubmitInfoLabel.Text = "发布成功";
+                    }
+                    else
+                    {
+                        this.SubmitInfoLabel.Text = "发布失败，可能是商品已存在！";
+                    }
+                }
+                catch(Exception ee)
+                {
+                    this.SubmitInfoLabel.Text = "发布失败商品图片无法上传，请检查图片文件格式！";
+                }
+            }
+            //没有选择文件或者文件格式不正确
+            else
+            {
+                this.SubmitInfoLabel.Text = "没有选择商品图片或者图片格式不正确！";
+            }
+            this.SubmitInfoLabel.Visible = true;
+       }     
+        
+
+        protected void CancelButton_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}

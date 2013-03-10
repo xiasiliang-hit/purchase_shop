@@ -1,0 +1,5 @@
+F:\school\201009-201101\软工课程设计\ZYBSoftwareClassDesign\SoftwareClassDesign\SoftwareClassDesign\bin\SoftwareClassDesign.dll
+F:\school\201009-201101\软工课程设计\ZYBSoftwareClassDesign\SoftwareClassDesign\SoftwareClassDesign\bin\SoftwareClassDesign.pdb
+F:\school\201009-201101\软工课程设计\ZYBSoftwareClassDesign\SoftwareClassDesign\SoftwareClassDesign\obj\Debug\ResolveAssemblyReference.cache
+F:\school\201009-201101\软工课程设计\ZYBSoftwareClassDesign\SoftwareClassDesign\SoftwareClassDesign\obj\Debug\SoftwareClassDesign.dll
+F:\school\201009-201101\软工课程设计\ZYBSoftwareClassDesign\SoftwareClassDesign\SoftwareClassDesign\obj\Debug\SoftwareClassDesign.pdb

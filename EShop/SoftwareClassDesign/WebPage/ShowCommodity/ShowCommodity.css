@@ -1,0 +1,48 @@
+﻿#TheBigTable
+{
+         margin-left:100px;
+     margin-right:100px;
+       float:left;
+      text-align:center;
+      width:1042px;
+ margin-top:5px;
+     border-style:solid;    
+    border-color:Gray;
+    border-width:2px;
+    
+    }
+
+        .Image
+        {
+            width:200px;
+            height:300px;
+        }
+       
+       
+#SellerInformation
+{
+     border-style:solid;
+     border-color:Gray;
+     
+    
+    }
+    
+    #InformationWithoutImage{
+     border-style:solid;
+     border-color:Gray;
+     
+    
+    }
+
+    #SellerOtherCommodity
+    {
+             border-style:solid;
+     border-color:Gray;
+        }
+    .Comment
+    {
+             border-style:solid;
+     border-color:Gray;
+     border-width:2px;
+        
+        }

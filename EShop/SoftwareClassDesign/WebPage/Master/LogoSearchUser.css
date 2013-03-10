@@ -1,0 +1,30 @@
+﻿body  
+{
+    font-family :微软雅黑;
+   
+}
+#Logo
+{    height: 70px;
+    width: 230px;
+    margin-top: 0px;
+}
+ 
+
+#Table
+{
+     margin-left:100px;
+     margin-right:100px;
+     margin-bottom:5px;
+       float:left;
+      text-align:center;
+      width:1042px;
+
+     border-style:solid;    
+    border-color:Gray;
+    border-width:2px;
+    }
+.Image40PX
+{
+     height:64px;
+     width:64px;
+    }

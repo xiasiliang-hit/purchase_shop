@@ -1,0 +1,120 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="LogoSearchUser.Master.cs"
+    Inherits="SoftwareClassDesign.WebPage.Master.LogoSearchUser" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+    <link href="LogoSearchUser.css" rel="stylesheet" type="text/css" />
+    <title>E购</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <script type="text/javascript">
+        function locking() {
+            document.all.ly.style.display = "block";
+            document.all.ly.style.width = document.body.clientWidth;
+            document.all.ly.style.height = document.body.clientHeight;
+
+            document.all.LoginDiv.style.display = 'block';
+            document.all.LoginDiv.style.left = (document.body.offsetWidth - 340) / 2;
+            document.all.LoginDiv.style.top = (document.body.offsetHeight - 250) / 2 + document.body.scrollTop;
+
+        }
+        function Lock_CheckForm(theForm) {
+            document.all.ly.style.display = 'none';
+            document.all.LoginDiv.style.display = 'none';
+            return false;
+        }
+    </script>
+
+
+
+</head>
+<body background="../../Images/ForFun.jpg">
+    <form id="form1" runat="server">
+    <div id="ly" style="position: absolute; filter: alpha(opacity=60); top: 0px; background-color: #777;
+        z-index: 2; left: 0px; display: none;">
+    </div>
+    <div id="ContainAll">
+        <div id="NewWorld">
+            <table id="Table" align="center">
+                <tr>
+                    <td class="style1">
+                        &nbsp;
+                        <div id="Logo">
+                            <asp:ImageButton ID="ImageButtonLogo" runat="server" ImageUrl="~/newpng/Chat japonais1.png"
+                                OnClick="ImageButtonLogo_Click" Height="70px" />
+                            
+                        </div>
+                    </td>
+                    <td class="style1">
+                        &nbsp;
+                        <div id="UserInfoAfterLogin" class="SlidePag" runat="server">
+                            <asp:HyperLink ID="HTuserName" runat="server">UserNickName </asp:HyperLink>
+                            <asp:ImageButton ID="ImageButtonMessage" CssClass="Image40PX" runat="server" ImageUrl="~/newpng/Email.png"
+                                OnClick="ImageButtonMessage_Click" />
+                            <asp:HyperLink ID="HLMessageNumber" runat="server">HyperLink</asp:HyperLink>
+                            <asp:ImageButton ID="ImageButtonShoopingCar" CssClass="Image40PX" runat="server"
+                                ImageUrl="~/newpng/Shopping cart.png" OnClick="ImageButtonShoopingCar_Click1" />
+                            <asp:ImageButton ID="ImageButtonLeave" CssClass="Image40PX" runat="server" ImageUrl="~/newpng/Down arrow.png"
+                                OnClick="ImageButtonLeave_Click" />
+                        </div>
+                    </td>
+                    <td class="style1">
+                        &nbsp;
+                        <div id="search" runat="server" align="center">
+                            <asp:TextBox ID="SearchTextBox" runat="server" Height="30px" Font-Size="Large"></asp:TextBox>
+                            <asp:ImageButton ID="SearchButton1" CssClass="Image40PX" runat="server" AlternateText="搜索"
+                                ImageUrl="~/newpng/Search magnifier.png" ToolTip="搜索" OnClick="SearchButton1_Click" />
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="style3">
+                        <h2>
+                            E购大学生购物平台</h2>
+&nbsp;</td>
+                    <td class="style4">
+                        <div id="UserInfoBeforeLogin" class="SlidePag" runat="server">
+                            <img alt="登陆" src="../../newpng/Login.png" class="Image40PX" 
+                                onclick="locking()" />
+                            
+                            <asp:ImageButton ID="ImageButtonRegister" CssClass="Image40PX" runat="server" AlternateText="注册"
+                                ImageUrl="~/newpng/User.png" ToolTip="注册" OnClick="ImageButtonRegister_Click" />
+                            &nbsp;</div>
+                    </td>
+                    <td class="style5">
+                        &nbsp;
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div id="otherPage">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+        <div id="Fotter" style="height: auto" align="center">
+        <br class="clearfloat" />
+        <div id="LoginDiv" align="center" style="position: absolute; z-index: 3; background-color: #fff;
+            display: none;">
+            <asp:Label ID="Label2" runat="server" Text="请登录"></asp:Label>
+            <br class="clearfloat" />
+            <asp:Label ID="Label3" runat="server" Text="用户名:"></asp:Label>
+            <asp:TextBox ID="InputUserNameBox" runat="server"></asp:TextBox>
+            <br class="clearfloat" />
+            <asp:Label ID="Label4" runat="server" Text="密   码:"></asp:Label>
+            <asp:TextBox ID="InoutPswBox" runat="server" TextMode="Password"></asp:TextBox>
+            <br />
+            <asp:RadioButton ID="RadioButton1" runat="server" Text="记住我" />
+            <br />
+            <asp:Label ID="LoginFales" runat="server" Text="登录失败请重新尝试" Visible="False"></asp:Label>
+            <br class="clearfloat" />
+            <asp:Button ID="LogINSubmitButton" runat="server" Text="确认" OnClick="LoginSubmit_Click" />
+            <asp:Button ID="quxiao" runat="server" Text="取消" OnClick="quxiaoSubmit_Click" />
+            <br />
+        </div>
+        <div id="RegisterDiv" runat="server">
+        </div>
+    </div>
+    </form>
+</body>
+</html>

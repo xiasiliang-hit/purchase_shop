@@ -1,0 +1,120 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/WebPage/Master/LogoSearchUser.Master"
+    AutoEventWireup="true" CodeBehind="UserOwnZoneMasterPage.master.cs" Inherits="SoftwareClassDesign.WebPage.UserOwnZonePage.UserOwnZonePageMasterPage.UserOwnZoneMasterPage" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    </asp:ScriptManager>
+    <div>
+        <!--用户主页的模板内容-->
+        <div id="TopNavigationbarDiv">
+            <asp:Label ID="SearchLabel" runat="server" Text="搜人" Font-Size="20px" CssClass="SearchLabelCSS"></asp:Label>
+            <asp:ImageButton ID="SearchUserButton" runat="server" ImageUrl="~/Images/ImagesForUserMainPageMasterPage/搜人.png"
+                ToolTip="搜人" CssClass="SearchUserButtonCSS" />
+            <asp:TextBox ID="SearchUserTextBox" runat="server" CssClass="SearchUserTextBoxCSS"
+                AutoCompleteType="Search" Font-Names="微软雅黑" Font-Size="15px" ForeColor="Black">输入用户昵称获电话号码搜索用户</asp:TextBox>
+        </div>
+        <div id="UserBasicInfoDiv">
+            <div id="UserImageDiv">
+                <asp:Image ID="UserImage" runat="server" CssClass="UserImage" ImageUrl="~/Pic/zhao.jpg" />
+            </div>
+            <div id="AddAttentionAndInsiteMessageButtonDiv">
+                <asp:ImageButton ID="AddAttentionButton" runat="server" CssClass="AddAttentionButtonCSS"
+                    ImageUrl="~/Images/ImagesForUserOwnZoneMasterPage/发私信.png" OnClick="AddAttentionButton_Click" />
+                <asp:ImageButton ID="PublishInsiteMessageButton" runat="server" CssClass="PublishInsiteMessageButtonCSS"
+                    ImageUrl="~/Images/ImagesForUserOwnZoneMasterPage/加关注.png" OnClick="PublishInsiteMessageButton_Click" />
+            </div>
+            <div id="UserInfoContentDiv">
+                <ul id="UserInfoContentUL">
+                    <li>
+                        <asp:Label ID="UserNickNameLabel" runat="server" Text="用户昵称" CssClass="UserNickNameLabelCSS"
+                            ForeColor="#9900CC" Font-Bold="True" Font-Names="微软雅黑" Font-Size="18px"></asp:Label>
+                        </li>
+                    <li>
+                        <asp:Label ID="CityTitle" runat="server" Text="所在城市:" CssClass="CityTitleCSS" Font-Names="微软雅黑"
+                            Font-Size="14px"></asp:Label>
+                        <asp:Label ID="UserCityLabel" runat="server" Text="城市" CssClass="UserCityLabelCSS"
+                            Font-Names="微软雅黑" Font-Size="14px"></asp:Label></li>
+                    <li>
+                        <asp:Label ID="SchoolTitle" runat="server" Text="所在学校:" CssClass="SchoolTitlelCSS"
+                            Font-Names="微软雅黑" Font-Size="14px"></asp:Label>
+                        <asp:Label ID="UserSchoolLabel" runat="server" Text="学校" CssClass="UserSchoolLabelCSS"
+                            Font-Names="微软雅黑" Font-Size="14px"></asp:Label></li>
+                    <li>
+                        <asp:Label ID="PhoneTitle" runat="server" Text="联系电话:" CssClass="PhoneTitleCSS" Font-Names="微软雅黑"
+                            Font-Size="14px"></asp:Label>
+                        <asp:Label ID="UserPhoneLabel" runat="server" Text="电话" CssClass="UserPhoneLabelCSS"
+                            Font-Names="微软雅黑" Font-Size="14px"></asp:Label></li>
+                    <li>
+                        <asp:Label ID="AddressTitle" runat="server" Text="联系地址:" CssClass="AddressTitleCSS"
+                            Font-Names="微软雅黑" Font-Size="14px"></asp:Label>
+                        <asp:Label ID="UserAddressLabel" runat="server" Text="地址" CssClass="UserAddressLabelCSS"
+                            Font-Names="微软雅黑" Font-Size="14px"></asp:Label></li>
+                </ul>
+            </div>
+        </div>
+        <div id="UserFriendsList">
+            <div id="UserFriendsDiv">
+                <asp:Label ID="Label1" runat="server" Text="主人好友" Font-Bold="True" 
+                    Font-Size="20px" ForeColor="White"></asp:Label>
+            </div>
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
+                BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="4" 
+                DataSourceID="SqlDataSource1" EnableModelValidation="True" Font-Names="微软雅黑" 
+                Font-Size="15px" ForeColor="Black" GridLines="Horizontal" Width="250px" CssClass="FriendGridViewCSS">
+                <Columns>
+                    <asp:ImageField DataImageUrlField="portraitPath">
+                        <ControlStyle Height="50px" Width="50px" />
+                    </asp:ImageField>
+                    <asp:BoundField DataField="nickname" HeaderText="昵称" 
+                        SortExpression="nickname" />
+                    <asp:BoundField DataField="phone" HeaderText="电话" SortExpression="phone" />
+                </Columns>
+                <FooterStyle BackColor="#CCCC99" ForeColor="Black" />
+                <HeaderStyle BackColor="#333333" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="White" ForeColor="Black" HorizontalAlign="Right" />
+                <SelectedRowStyle BackColor="#CC3333" Font-Bold="True" ForeColor="White" />
+            </asp:GridView>
+            <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+                ConnectionString="<%$ ConnectionStrings:PurchaseWeb_v1ConnectionString1 %>" 
+                SelectCommand="SELECT [nickname], [phone], [portraitPath] FROM [RegistedUser]">
+            </asp:SqlDataSource>
+        </div>
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <div id="SubPageContentDiv">
+                    <!--放派生的子页面的内容-->
+                    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        <div id="UserToolBoxDiv">
+            <asp:TreeView ID="TreeView1" runat="server" CssClass="UserToolBoxDivCSS" BorderColor="#333333"
+                BorderStyle="Solid" Font-Names="微软雅黑" Font-Size="Large" ForeColor="Black">
+                <Nodes>
+                    <asp:TreeNode Text="工具箱" Value="工具箱">
+                        <asp:TreeNode Expanded="True" ImageUrl="~/Images/ImagesForUserMainPageMasterPage/我的宝贝.png"
+                            Text="主人宝贝" Value="我的宝贝" 
+                            NavigateUrl="~/WebPage/UserOwnZonePage/UserCommodityPage/UserCommodityPage.aspx"></asp:TreeNode>
+                        <asp:TreeNode ImageUrl="~/Images/ImagesForUserMainPageMasterPage/留言.png" Text="留言板"
+                            Value="留言板" 
+                            NavigateUrl="~/WebPage/UserOwnZonePage/UserPublicMessagePage/UserPublicMessagePage.aspx"></asp:TreeNode>
+                        <asp:TreeNode ImageUrl="~/Images/ImagesForUserMainPageMasterPage/评论.png" Text="顾客评论"
+                            Value="评论管理" 
+                            NavigateUrl="~/WebPage/UserOwnZonePage/UserCommentsPage/UserCommentsPage.aspx"></asp:TreeNode>
+                        <asp:TreeNode ImageUrl="~/Images/ImagesForUserMainPageMasterPage/好友.png" Text="主人好友"
+                            Value="我的好友" 
+                            NavigateUrl="~/WebPage/UserOwnZonePage/UserFriendsListPage/UserFriendsListPage.aspx"></asp:TreeNode>
+                        <asp:TreeNode ImageUrl="~/Images/ImagesForUserMainPageMasterPage/设置.png" Text="主人资料"
+                            Value="编辑个人资料" 
+                            NavigateUrl="~/WebPage/UserOwnZonePage/UserInfoPage/UserInfoPage.aspx"></asp:TreeNode>
+                    </asp:TreeNode>
+                </Nodes>
+            </asp:TreeView>
+        </div>
+    </div>
+</asp:Content>
